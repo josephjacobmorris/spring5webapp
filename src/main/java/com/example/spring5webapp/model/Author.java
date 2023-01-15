@@ -1,13 +1,21 @@
 package com.example.spring5webapp.model;
 
+import jakarta.persistence.*;
+
 import java.util.Set;
 
+@Entity
 public class Author {
     private String firstName;
 
     private String lastName;
 
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     public Author() {
     }
@@ -40,5 +48,13 @@ public class Author {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
