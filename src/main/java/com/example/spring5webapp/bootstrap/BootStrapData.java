@@ -26,19 +26,22 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        Publisher dummyPublisher = new Publisher("Dummy", "Dummy Address", "Dummy City", "Dummy State", "Dummy Zip");
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "124232424242");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
+        ddd.setPublisher(dummyPublisher);
+        dummyPublisher.getBooks().add(ddd);
 
         authorRepository.save(eric);
         bookRepository.save(ddd);
-
-        Publisher dummyPublisher = new Publisher("Dummy", "Dummy Address", "Dummy City", "Dummy State", "Dummy Zip");
         publisherRepository.save(dummyPublisher);
+
 
         System.out.println("Starting in BootStrap");
         System.out.println("No of books:" + bookRepository.count());
-        System.out.println("No of publishers:" + publisherRepository.count());
+        System.out.println("No of books published by dummyPublisher:" + dummyPublisher.getBooks().size());
     }
 }

@@ -20,6 +20,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private Publisher publisher;
+
     public Book() {
     }
 
@@ -59,6 +62,14 @@ public class Book {
 
     public Long getId() {
         return id;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override
