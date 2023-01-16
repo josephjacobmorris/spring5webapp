@@ -2,6 +2,7 @@ package com.example.spring5webapp.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,10 +22,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(String firstName, String lastName, Set<Book> books) {
+    public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.books = books;
+        this.books = new HashSet<>();
     }
 
     public String getFirstName() {
