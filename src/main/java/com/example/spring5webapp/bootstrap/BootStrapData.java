@@ -28,6 +28,8 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Publisher dummyPublisher = new Publisher("Dummy", "Dummy Address", "Dummy City", "Dummy State", "Dummy Zip");
+        publisherRepository.save(dummyPublisher);
+
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "124232424242");
         eric.getBooks().add(ddd);
@@ -38,6 +40,7 @@ public class BootStrapData implements CommandLineRunner {
         authorRepository.save(eric);
         bookRepository.save(ddd);
         publisherRepository.save(dummyPublisher);
+
 
 
         System.out.println("Starting in BootStrap");
